@@ -1,0 +1,7 @@
+Importante:
+
+Para o sqlite conseguir escrever no db ele precisa de 
+permissao de escrita no diretorio em que o db esta localizado.
+Logo, o pasta que o contem precisa ter permissoes 777.
+
+*** Apesar dos testes em servidor proprio terem indicado o contrario, as permissoes padrao da pasta (755) satisfazem as necessidades da cgi no gruyere. Nao é permitido permissao 777 na pasta no gruyere pois o Apache bloqueia tal configuração por inseguranca.
