@@ -1,11 +1,10 @@
 #!/usr/bin/python
 
-import sqlite3Functions as sql
+#import sqlite3Functions as sql
 import sqlite3Models as models
 import json
 
-db = 'teste.db'
-
+db = 'Chinook_Sqlite.sqlite'
 
 def parser(func):
   return(json.dumps(func ,indent=4, separators=(',', ': ')  ))
