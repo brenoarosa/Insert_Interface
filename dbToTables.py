@@ -3,28 +3,29 @@
 import cgi
 import os
 import JSONmodules 
-import htmlPrint
+from view.failure import failure as viewFailure
+from view.tables import tables as viewTables
 from dbToJson import dbToJson 
 
 form = cgi.FieldStorage()
-#db = form.getvalue("DATABASE_NAME")
-db = 'teste.db'
+db = form.getvalue("DATABASE_NAME")
 
 if not os.path.isfile(db):
-  htmlPrint.failure('O banco de dados indicado nao existe!')
-  sys.exit(0)
+  viewFailure('O banco de dados indicado nao existe!')
+  exit(0)
 
 try:
   db = dbToJson.convert(db)
 except IOError as error:
-  htmlPrint.failure('Nao foi possivel criar o correspondente .json')
+  viewFailure('Nao foi possivel criar o correspondente .json')
+  exit(0)
 
 tables = JSONmodules.listTables(db)
 
 if not tables:
-  htmlPrint.failure('Banco de dados vazio!')
+  viewFailure('Banco de dados vazio!')
   exit(0)
 
-htmlPrint.tables(tables, db)
+viewTables(tables, db)
 exit(0)
 

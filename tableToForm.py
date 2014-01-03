@@ -3,7 +3,10 @@
 import cgi
 import os
 import JSONmodules 
-import htmlPrint
+from view.failure import failure as viewFailure
+from view.basicXml import basicXml as viewBasicXml
+from view.advanced import advanced as viewAdvanced
+from view.insert import insert as viewInsert
 
 form = cgi.FieldStorage()
 db = form.getvalue("DATABASE_NAME")
@@ -11,29 +14,29 @@ table = form.getvalue("DATABASE_TABLE")
 action = form.getvalue("DATABASE_ACTION")
 
 if ( action == None ):
-  htmlPrint.failure('Selecione o modo!')
+  viewFailure('Selecione o modo!')
   exit(0)
 
 
 if table == None:
-  htmlPrint.failure('Tabela invalida!')
+  viewFailure('Tabela invalida!')
   exit(0)
 
 
 if action == "XML":
-  htmlPrint.basicXml(db, table) 
+  viewBasicXml(db, table) 
   exit(0)
 
 
 if action == "ADVANCED":
-  htmlPrint.advanced(db, table)
+  viewAdvanced(db, table)
   exit(0)
 
 
 if action == "INSERT":
-  htmlPrint.insert(db, table)
+  viewInsert(db, table)
   exit(0)
 
 if action == "SHOW":
-  htmlPrint.show(db, table, fieldName)
+  viewShow(db, table, fieldName)
   sys.exit(0)
