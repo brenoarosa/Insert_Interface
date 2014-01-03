@@ -9,14 +9,16 @@ db = 'Chinook_Sqlite.sqlite'
 def parser(func):
   return(json.dumps(func ,indent=4, separators=(',', ': ')  ))
 
+def convert(db):
+  dbList = db.split(".")
+  dbList = dbList[:-1]
+  dbJson = ".".join(dbList) + ".json"
 
-dbList = db.split(".")
-dbList = dbList[:-1]
-dbJson = ".".join(dbList) + ".json"
-
-try:
-  jsonFile = open(dbJson, 'w')
-  jsonFile.write(parser(models.modelDb(db)))
-except IOError as error:
-  print ("File cannot be created!")
+  try:
+    jsonFile = open(dbJson, 'w')
+    jsonFile.write(parser(models.modelDb(db)))
+  except IOError as error:
+    raise IOError("File cannot be created!")
+  
+  return dbJson
 

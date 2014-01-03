@@ -1,27 +1,30 @@
 #!/usr/bin/python
 
-import sys
-import cgitb
 import cgi
 import os
-import DBmodules 
+import JSONmodules 
 import htmlPrint
-
+from dbToJson import dbToJson 
 
 form = cgi.FieldStorage()
-db = form.getvalue("DATABASE_NAME")
-
+#db = form.getvalue("DATABASE_NAME")
+db = 'teste.db'
 
 if not os.path.isfile(db):
   htmlPrint.failure('O banco de dados indicado nao existe!')
   sys.exit(0)
 
-tables = DBmodules.listTables(db)
+try:
+  db = dbToJson.convert(db)
+except IOError as error:
+  htmlPrint.failure('Nao foi possivel criar o correspondente .json')
 
-if tables[0] == None:
+tables = JSONmodules.listTables(db)
+
+if not tables:
   htmlPrint.failure('Banco de dados vazio!')
-  sys.exit(0)
+  exit(0)
 
 htmlPrint.tables(tables, db)
-sys.exit(0)
+exit(0)
 
