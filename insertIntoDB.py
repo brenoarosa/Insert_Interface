@@ -52,25 +52,6 @@ if con:
     con.close()
     sys.exit(0)
   
-  except lite.IntegrityError:
-    exceptionType, exceptionValue, exceptionTraceback = sys.exc_info()    
-    htmlPrint.failure(exceptionValue) ####
-  except lite.DataError:
-    exceptionType, exceptionValue, exceptionTraceback = sys.exc_info()
-    htmlPrint.failure(exceptionValue) ####
-  except lite.InternalError:
-    exceptionType, exceptionValue, exceptionTraceback = sys.exc_info()
-    htmlPrint.failure(exceptionValue) ####
-  except lite.NotSupportedError:
-    exceptionType, exceptionValue, exceptionTraceback = sys.exc_info()
-    htmlPrint.failure(exceptionValue) ####
-  except lite.OperationalError:
-    exceptionType, exceptionValue, exceptionTraceback = sys.exc_info()
-    htmlPrint.failure(exceptionValue) ####
-  except lite.ProgrammingError:
-    exceptionType, exceptionValue, exceptionTraceback = sys.exc_info()
-    htmlPrint.failure(exceptionValue) ####
-
   actionDB.close()
 
 con.close()

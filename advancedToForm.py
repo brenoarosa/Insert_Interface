@@ -5,23 +5,6 @@
 # passando para a funcao que escrevera o xml
 # 
 
-"""
-estrutura xml:
-
-<column>
-<colName></colName>
-<colFormName></colFormName>
-
-<colType></colType>
-<colReferenceTable></colReferenceTable>
-<colReferenceCol></colReferenceCol>
-
-<colMandatory></colMandatory>
-<colDefaultValue></colDefaultValue>
-<colPrimaryKey></colPrimaryKey>
-
-</column>
-"""
 
 import sys
 import cgi
