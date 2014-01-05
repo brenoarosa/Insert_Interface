@@ -10,7 +10,7 @@ def insertTransaction(db, transaction):
 # exceptionValue (out) : retorna a string de error
 
   exceptionValue = ""
-  success = 1
+  sucess = True
 
   if not os.path.isfile(db):
     sys.exit(0)
@@ -25,7 +25,7 @@ def insertTransaction(db, transaction):
     
     except lite.Error:
       exceptionType, exceptionValue, exceptionTraceback = sys.exc_info()
-      sucess = 0
+      sucess = False
 
   return (success, exceptionValue);
 
