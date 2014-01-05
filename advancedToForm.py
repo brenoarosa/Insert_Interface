@@ -5,15 +5,8 @@
 # passando para a funcao que escrevera o xml
 # 
 
-
-import sys
-import cgi
-import os
-import DBmodules
-import htmlPrint
-import traceback
-
 """
+BUGTRACK
 try:
     blabablabla
 
@@ -22,41 +15,50 @@ except lite.Error:
     htmlPrint.failure(exceptionValue) ####
 """
 
+
+import sys
+import cgi
+import os
+import JSONmodules
+import traceback
+from view.insert import insert as viewInsert
+from view.failure import failure as viewFailure
+from view.advancedXml import advancedXml as viewAdvancedXml
+
+
 form = cgi.FieldStorage()
 db = form.getvalue("DATABASE_NAME")
 table = form.getvalue("DATABASE_TABLE")
 mode = form.getvalue("OUTPUT_MODE")
 
-(tableRelational, fieldMain, fieldRelational, fieldName, fieldType, mandatoryField, defaultValue, primaryKey) = DBmodules.listTableAttributes(db, table)
+fieldName = JSONmodules.fieldsList(db, table)
 
-IIName = []
-Mandatory = []
-Padrao = []
-Disable = []
+fieldOpt = {}
 
 # getvalue de campo que nao for preenchido sera colocado como None na lista 
 
 for name in fieldName:
-  aux = htmlPrint.getIndex(name, fieldName)
-  IIName.append (form.getvalue(name+"_IINAME") )
-  Mandatory.append (form.getvalue(name+"_MANDATORY") )
-  Padrao.append (form.getvalue(name+"_DEFAULT") )
-  Disable.append (form.getvalue(name+"_DISABLE"))
+  singularFieldOpt = {}
+  singularFieldOpt['IIName'] = form.getvalue(name+"_IINAME") 
+  singularFieldOpt['mandatoryField'] = form.getvalue(name+"_MANDATORY") 
+  singularFieldOpt['defaultValue'] = form.getvalue(name+"_DEFAULT") 
+  singularFieldOpt['disable'] = form.getvalue(name+"_DISABLE")
+  fieldOpt['name'] = singularFieldOpt
 
 if ( mode == "II"):
   try:
-    htmlPrint.insert (db, table, tableRelational, fieldMain, fieldRelational, fieldName, fieldType, IIName, Mandatory, Padrao, Disable)
+    viewInsert (db, table, fieldOpt)
   except:
     exceptionType, exceptionValue, exceptionTraceback = sys.exc_info()
-    htmlPrint.failure(exceptionValue) ####  
+    viewFailure(exceptionValue) ####  
 
 
 if ( mode == "XML"):
   try:
-    htmlPrint.advancedXml (db, table, tableRelational, fieldMain, fieldRelational, fieldName, fieldType, IIName, Mandatory, Padrao, Disable)
+    viewAdvancedXml (db, table, fieldOpt)
   except:
     exceptionType, exceptionValue, exceptionTraceback = sys.exc_info()
-    htmlPrint.failure(exceptionValue) ####
+    viewFailure(exceptionValue) ####
 
-sys.exit(0)
+exit(0)
 
