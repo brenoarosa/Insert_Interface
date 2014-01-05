@@ -43,7 +43,7 @@ for name in fieldName:
   singularFieldOpt['mandatoryField'] = form.getvalue(name+"_MANDATORY") 
   singularFieldOpt['defaultValue'] = form.getvalue(name+"_DEFAULT") 
   singularFieldOpt['disable'] = form.getvalue(name+"_DISABLE")
-  fieldOpt['name'] = singularFieldOpt
+  fieldOpt[name] = singularFieldOpt
 
 if ( mode == "II"):
   try:

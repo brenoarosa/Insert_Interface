@@ -70,17 +70,21 @@ def insert (db, table, fieldOpt=None):
         Disable = "disabled"
 
 
-      if (relationalField != None): #tem relacionamento, aux eh index do campo no fieldMain
-        print "<div> %s: <select name=\"FIELD_%s\" id=\"DATABASE_FIELD_%s\">" % (name, name, name)
+      if (fieldRelational != None): #tem relacionamento, aux eh index do campo no fieldMain
+        print "<div> %s%s: <select name=\"FIELD_%s\" id=\"DATABASE_FIELD_%s\" %s>" % (IIName, Mandatory, name, name, Disable)
 
         for value in relationalValues:
-          print "<option value=\"" + value +"\">" + value +" </option> "
+	  if (value == defaultValue):
+	    print "<option value=\"" + value +"\" selected >" + value +" </option> "
+
+          else:
+	    print "<option value=\"" + value +"\">" + value +" </option> "
         print "</select>"
 
         print "<class=\"submitButtonDiv\"><input type=\"button\" value=\"Add\" onclick = \"envia('"+ tableRelational +"');\"></div>"
 
 
-      if (relationalField == None): #Nao tem relacionamento
+      if (fieldRelational == None): #Nao tem relacionamento
         print "<div> %s%s: <input type=\"text\" name=\"FIELD_%s\" id=\"DATABASE_FIELD_%s\" value=\"%s\" %s></div>" % (IIName, Mandatory, name, name, defaultValue, Disable)
 
   print "</div>" #div class
