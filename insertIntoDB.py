@@ -27,6 +27,7 @@ for field in fieldName:
 
 for i in xrange(len(fieldName)): #Varre todos campos
 
+  viewFailure(str(i) + " : "+ str(values[i]))
   if values[i] != None: #Se a pessoa nao deixar o campo em branco
     field = "\'" + fieldName[i] + "\'"
     stringFields = stringFields + ", " + field
@@ -47,6 +48,6 @@ except Exception, e:
   viewFailure(e)
   exit(0)
 
-viewSuccess("Entrada adicionada ao Banco de Dados com sucesso!")  
+viewSuccess("Sql: "+transaction+"\nEntrada adicionada ao Banco de Dados com sucesso!")  
 exit(0)
 

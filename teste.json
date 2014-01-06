@@ -1,0 +1,86 @@
+{
+    "cadastro": {
+        "Idade": {
+            "tableRelational": null,
+            "relationalValues": null,
+            "defaultValue": null,
+            "primaryKey": 0,
+            "fieldType": "NUMERIC",
+            "fieldRelational": null,
+            "mandatoryField": 0
+        },
+        "Faculdade": {
+            "tableRelational": "Universidades",
+            "relationalValues": [
+                "PUC",
+                "UERJ",
+                "UFF",
+                "UFRJ",
+                "Unicamp"
+            ],
+            "defaultValue": null,
+            "primaryKey": 0,
+            "fieldType": "TEXT",
+            "fieldRelational": "nome",
+            "mandatoryField": 0
+        },
+        "ID_Alunos": {
+            "tableRelational": null,
+            "relationalValues": null,
+            "defaultValue": null,
+            "primaryKey": 1,
+            "fieldType": "INTEGER",
+            "fieldRelational": null,
+            "mandatoryField": 0
+        },
+        "Nome": {
+            "tableRelational": null,
+            "relationalValues": null,
+            "defaultValue": null,
+            "primaryKey": 0,
+            "fieldType": "TEXT",
+            "fieldRelational": null,
+            "mandatoryField": 0
+        }
+    },
+    "sqlite_sequence": {
+        "name": {
+            "tableRelational": null,
+            "relationalValues": null,
+            "defaultValue": null,
+            "primaryKey": 0,
+            "fieldType": "",
+            "fieldRelational": null,
+            "mandatoryField": 0
+        },
+        "seq": {
+            "tableRelational": null,
+            "relationalValues": null,
+            "defaultValue": null,
+            "primaryKey": 0,
+            "fieldType": "",
+            "fieldRelational": null,
+            "mandatoryField": 0
+        }
+    },
+    "Universidades": {
+        "id": {
+            "tableRelational": null,
+            "relationalValues": null,
+            "defaultValue": null,
+            "primaryKey": 0,
+            "fieldType": "INTEGER",
+            "fieldRelational": null,
+            "mandatoryField": 0
+        },
+        "nome": {
+            "tableRelational": null,
+            "relationalValues": null,
+            "defaultValue": null,
+            "primaryKey": 1,
+            "fieldType": "TEXT",
+            "fieldRelational": null,
+            "mandatoryField": 0
+        }
+    }
+}
