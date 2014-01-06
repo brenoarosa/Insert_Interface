@@ -48,6 +48,6 @@ except Exception, e:
   viewFailure(e)
   exit(0)
 
-viewSuccess("Sql: "+transaction+"\nEntrada adicionada ao Banco de Dados com sucesso!")  
+viewSuccess("Entrada adicionada ao Banco de Dados com sucesso!")  
 exit(0)
 
