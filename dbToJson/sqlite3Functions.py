@@ -2,7 +2,6 @@
 
 import sqlite3 as lite
 import os
-import sys
 
 '''
   As funcoes aqui definidas retornam sempre listas,
@@ -11,6 +10,33 @@ import sys
 
 class DbNotFoundError(Exception):
   pass
+
+
+def insertTransaction(db, transaction):
+# transaction (in) : script de insercao no DB
+# sucess (out) : retorna se a operacao foi realizada com sucesso
+# exceptionValue (out) : retorna a string de error
+
+  success = True
+  exceptionValue = ""
+
+  if not os.path.isfile(db):
+    sys.exit(0)
+
+  con = lite.connect(db)
+
+  if con:
+    cur = con.cursor()
+
+    try:
+      cur.execute(transaction)
+      con.commit()
+
+    except lite.Error, e:
+      raise lite.Error(e)
+
+    con.close()
+  return (success, exceptionValue);
 
 def listTables(db):
 # db (input) - Database name

@@ -1,6 +1,12 @@
 Quando transformamos o db em json e importamos ele no python, o db se transforma em um dict.
 Eh importante conhecer a notacao de dict para total compreensao do codigo.
 
+
+atualmente a primeira pagina muda a extensao do db para .json, eh preciso passar de pagina em
+pagina para nao se perder o nome original. O que esta sendo feito agora é procurar na pasta se existe
+algum arquivo que o nome bata.
+
+
 Importante:
 
 Para o sqlite conseguir escrever no db ele precisa de 

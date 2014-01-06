@@ -3,22 +3,35 @@
 #import sqlite3Functions as sql
 import sqlite3Models as models
 import json
-
-db = 'Chinook_Sqlite.sqlite'
+import os
 
 def parser(func):
   return(json.dumps(func ,indent=4, separators=(',', ': ')  ))
 
-def convert(db):
+def jsonExt(db):
   dbList = db.split(".")
   dbList = dbList[:-1]
   dbJson = ".".join(dbList) + ".json"
+  return dbJson
+
+def convert(db):
+  dbJson = jsonExt(db)
 
   try:
     jsonFile = open(dbJson, 'w')
     jsonFile.write(parser(models.modelDb(db)))
   except IOError as error:
     raise IOError("File cannot be created!")
-  
   return dbJson
 
+def searchOriginalName(db):
+  db = db.split(".")
+  db = db[:-1]
+  db = ".".join(db)
+
+  for filename in os.listdir( "." ):
+    if db in filename:
+      if ".json" in filename:
+        pass
+      else:
+        return filename

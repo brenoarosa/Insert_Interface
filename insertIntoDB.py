@@ -1,61 +1,52 @@
 #!/usr/bin/python
 
-import sys
-import cgitb
-import sqlite3 as lite
+import dbToJson.sqlite3Functions as sql
 import cgi
-import DBmodules
-import os
-import htmlPrint
-import traceback
+import JSONmodules
+from dbToJson import dbToJson
+from view.failure import failure as viewFailure
+from view.success import success as viewSuccess
+
 
 form = cgi.FieldStorage()
-
-
 db = form.getvalue("DATABASE_NAME")
-con = lite.connect(db) #Conectando com bando de dados.
+table = form.getvalue("DATABASE_TABLE") 
 
-if con:
-  table = form.getvalue("DATABASE_TABLE") 
-  (tUSELESS, fiUSELESS, fdUSELESS, fieldName, fieldType, dUSELESS, aUSELESS, iUSELESS) = DBmodules.listTableAttributes(db, table)
-  actionDB = con.cursor() #Instanciamento para realizar comandos no BD.
+fieldName = JSONmodules.fieldsList(db, table)
 
-  values = []
-  # Aqui serao armazenados os valores dos campos, na mesma sequencia que os campos estao estruturados no db
+values = []
+# Aqui serao armazenados os valores dos campos, na mesma sequencia que os campos estao estruturados no db
 
-  stringValues = ""
-  # aqui estarao os valores dos campos, em sequencia, separados por virgula
+stringFields = ""
+stringValues = ""
+# aqui estarao os valores dos campos, em sequencia, separados por virgula
 
-  for field in fieldName:
-    values.append( form.getvalue("FIELD_" + field) )
+for field in fieldName:
+  values.append( form.getvalue("FIELD_" + field) )
 
-  for value in values:
-    if value == None:
-      aux = htmlPrint.getIndex(value, values)
-      htmlPrint.failure("Campo "+ fieldName[aux] +" em branco!")
-      sys.exit(0)
 
-    value = "\'" + value + "\'"
+for i in xrange(len(fieldName)): #Varre todos campos
+
+  if values[i] != None: #Se a pessoa nao deixar o campo em branco
+    field = "\'" + fieldName[i] + "\'"
+    stringFields = stringFields + ", " + field
+    value = "\'" + values[i] + "\'"
     stringValues = stringValues + ", " + value
 
 
-  stringValues = stringValues[2:] # retira a virgula inicial
+stringValues = stringValues[2:] # retira a virgula inicial
+stringFields = stringFields[2:]
 
-#  htmlPrint.failure("INSERT INTO \""+ table +"\" VALUES(" + stringValues +");") ####DEBBUGER STRING
-  try:
-    actionDB.execute("INSERT INTO \""+ table +"\" VALUES(" + stringValues +");") 
-    con.commit() # envia o comando ao sql
+transaction = "INSERT INTO \""+ table +"\"("+ stringFields +") VALUES(" + stringValues +")"
 
-  except lite.Error:
-    exceptionType, exceptionValue, exceptionTraceback = sys.exc_info()
-    htmlPrint.failure(exceptionValue) ####
-    con.close()
-    sys.exit(0)
-  
-  actionDB.close()
+try:
+  db = dbToJson.searchOriginalName(db) #tenta achar o nome original do arquivo
+  sql.insertTransaction(db, transaction)
 
-con.close()
-htmlPrint.success("Entrada adicionada ao Banco de Dados com sucesso!")  
-sys.exit(0)
+except Exception, e:
+  viewFailure(e)
+  exit(0)
 
+viewSuccess("Entrada adicionada ao Banco de Dados com sucesso!")  
+exit(0)
 
