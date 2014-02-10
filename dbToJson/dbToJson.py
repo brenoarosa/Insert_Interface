@@ -5,8 +5,8 @@ import sqlite3Models as models
 import json
 import os
 
-def parser(func):
-  return(json.dumps(func ,indent=4, separators=(',', ': ')  ))
+def parser(obj):
+  return(json.dumps(obj ,indent=4, separators=(',', ': ')  ))
 
 def jsonExt(db):
   dbList = db.split(".")
@@ -20,6 +20,7 @@ def convert(db):
   try:
     jsonFile = open(dbJson, 'w')
     jsonFile.write(parser(models.modelDb(db)))
+    jsonFile.close()
   except IOError as error:
     raise IOError("File cannot be created!")
   return dbJson
