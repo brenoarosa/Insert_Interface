@@ -2,7 +2,18 @@ BUG:
 ADVANCED >
 Tip: Disabled <input> elements in a form will not be submitted.
 TODO CAMPO DESABILITADO NAO ENVIA A PALAVRA.
+<CORRIGIDO COM JS>
 
+CONFIGURANDO APACHE:
+
+/etc/apache2/mods-available/mime.conf
+	alterar linha:
+	#AddHandler cgi-script .cgi
+	para algo como:
+	AddHandler cgi-script .cgi .py .sh
+
+/etc/apache2/sites-available/
+	criar novo ou fazer alteracoes necessarias no default
 
 Quando transformamos o db em json e importamos ele no python, o db se transforma em um dict.
 Eh importante conhecer a notacao de dict para total compreensao do codigo.
