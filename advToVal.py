@@ -16,9 +16,8 @@ import cgi
 import os
 import JSONmodules
 import traceback
-from view.insert import insert as viewInsert
+from view.validate import validate as viewValidate
 from view.failure import failure as viewFailure
-from view.advancedXml import advancedXml as viewAdvancedXml
 from lib.random_id import random_id
 
 

@@ -27,7 +27,7 @@ for field in fieldName:
 
 for i in xrange(len(fieldName)): #Varre todos campos
 
-  viewFailure(str(i) + " : "+ str(values[i]))
+#  viewFailure(str(i) + " : "+ str(values[i])) DEBBUGER
   if values[i] != None: #Se a pessoa nao deixar o campo em branco
     field = "\'" + fieldName[i] + "\'"
     stringFields = stringFields + ", " + field
