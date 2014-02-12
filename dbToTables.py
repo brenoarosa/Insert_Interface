@@ -9,7 +9,6 @@ from dbToJson import dbToJson
 
 form = cgi.FieldStorage()
 db = form.getvalue("DATABASE_NAME")
-db = "teste.db"
 
 if not os.path.isfile(db):
   viewFailure('O banco de dados indicado nao existe!')
