@@ -1,14 +1,5 @@
 #!/usr/bin/python
 
-"""
-BUGTRACK
-try:
-    blabablabla
-
-except lite.Error:
-    exceptionType, exceptionValue, exceptionTraceback = sys.exc_info()
-    htmlPrint.failure(exceptionValue) ####
-"""
 
 import json
 import sys
@@ -58,8 +49,11 @@ try:
   jsonFile.write(fieldOptJson)
   print ("Created file "+ fileFullPath)
   jsonFile.close()
+  viewValidate(db, table, fileFullPath)
+
 except IOError as error:
-  raise IOError("File cannot be created!")
+  viewFailure("File cannot be created!")
 
 exit(0)
+
 
