@@ -12,12 +12,9 @@ from view.failure import failure as viewFailure
 from lib.random_id import random_id
 
 
-#form = cgi.FieldStorage()
-#db = form.getvalue("DATABASE_NAME")
-#table = form.getvalue("DATABASE_TABLE")
-#mode = form.getvalue("OUTPUT_MODE")
-db = "teste.json"
-table = "cadastro"
+form = cgi.FieldStorage()
+db = form.getvalue("DATABASE_NAME")
+table = form.getvalue("DATABASE_TABLE")
 
 fieldName = JSONmodules.fieldsList(db, table)
 
@@ -28,15 +25,13 @@ fieldOpt = {}
 for name in fieldName:
   singularFieldOpt = {}
 
-#  singularFieldOpt['IIName'] = form.getvalue(name+"_IINAME") 
-#  singularFieldOpt['mandatoryField'] = form.getvalue(name+"_MANDATORY") 
-#  singularFieldOpt['defaultValue'] = form.getvalue(name+"_DEFAULT") 
-#  singularFieldOpt['disable'] = form.getvalue(name+"_DISABLE")
-
-  singularFieldOpt['IIName'] = name+ "_IINAME" 
-  singularFieldOpt['mandatoryField'] = "True" 
-  singularFieldOpt['defaultValue'] = name+"_DEFAULT" 
-  singularFieldOpt['disable'] = "True"
+  singularFieldOpt['IIName'] = form.getvalue(name+"_IINAME") 
+  if singularFieldOpt['IIName'] == None:
+    singularFieldOpt['IIName'] = name
+  
+  singularFieldOpt['mandatoryField'] = form.getvalue(name+"_MANDATORY") 
+  singularFieldOpt['defaultValue'] = form.getvalue(name+"_DEFAULT") 
+  singularFieldOpt['disable'] = form.getvalue(name+"_DISABLE")
   fieldOpt[name] = singularFieldOpt
 
 fieldOptJson = json.dumps(fieldOpt ,indent=4, separators=(',', ': ')  )
@@ -47,7 +42,6 @@ fileFullPath = os.path.abspath("./temp") + "/" + jsonId
 try:
   jsonFile = open(fileFullPath, 'w')
   jsonFile.write(fieldOptJson)
-  print ("Created file "+ fileFullPath)
   jsonFile.close()
   viewValidate(db, table, fileFullPath)
 
@@ -55,5 +49,3 @@ except IOError as error:
   viewFailure("File cannot be created!")
 
 exit(0)
-
-

@@ -1,0 +1,14 @@
+{
+    "MediaTypeId": {
+        "IIName": "MediaTypeId",
+        "defaultValue": null,
+        "disable": null,
+        "mandatoryField": null
+    },
+    "Name": {
+        "IIName": "Name",
+        "defaultValue": null,
+        "disable": null,
+        "mandatoryField": null
+    }
+}

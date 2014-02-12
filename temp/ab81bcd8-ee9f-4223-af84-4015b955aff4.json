@@ -1,0 +1,56 @@
+{
+    "MediaTypeId": {
+        "IIName": "MediaTypeId",
+        "defaultValue": null,
+        "disable": null,
+        "mandatoryField": null
+    },
+    "Name": {
+        "IIName": "Name",
+        "defaultValue": null,
+        "disable": null,
+        "mandatoryField": null
+    },
+    "TrackId": {
+        "IIName": "TrackId",
+        "defaultValue": null,
+        "disable": null,
+        "mandatoryField": null
+    },
+    "Bytes": {
+        "IIName": "Bytes",
+        "defaultValue": null,
+        "disable": null,
+        "mandatoryField": null
+    },
+    "AlbumId": {
+        "IIName": "AlbumId",
+        "defaultValue": null,
+        "disable": null,
+        "mandatoryField": null
+    },
+    "Composer": {
+        "IIName": "Composer",
+        "defaultValue": null,
+        "disable": null,
+        "mandatoryField": null
+    },
+    "GenreId": {
+        "IIName": "GenreId",
+        "defaultValue": null,
+        "disable": null,
+        "mandatoryField": null
+    },
+    "UnitPrice": {
+        "IIName": "UnitPrice",
+        "defaultValue": null,
+        "disable": null,
+        "mandatoryField": null
+    },
+    "Milliseconds": {
+        "IIName": "Milliseconds",
+        "defaultValue": null,
+        "disable": null,
+        "mandatoryField": null
+    }
+}

@@ -77,9 +77,9 @@ def insert (db, table, fieldOpt=None):
           print "<div> %s%s: <select name=\"FIELD_%s\" id=\"DATABASE_FIELD_%s\" %s>" % (IIName, Mandatory, name, name, Disable)
           for value in relationalValues:
             if (value == defaultValue):
-	          print "<option value=\"" + value +"\" selected >" + value +" </option> "
+	          print "<option value=\"" + str(value) +"\" selected >" + str(value) +" </option> "
             else:
-              print "<option value=\"" + value +"\">" + value +" </option> "
+              print "<option value=\"" + str(value) +"\">" + str(value) +" </option> "
           print "</select>"
 
         if (option == "radio"):

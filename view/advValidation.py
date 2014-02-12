@@ -7,14 +7,14 @@ import JSONmodules
 CGIPATH = "."
 
 @header
-def advanced(db,table):
+def advValidation(db,table):
 #
 
   print "<div class=\"title2\">"
   print "<h2>Advanced Options</h2>"
   print "</div>" #header2
 
-  print "<div><form target=\"submitButton\" action=\""+CGIPATH+"/advancedToForm.py\" method=\"post\" >"
+  print "<div><form target=\"submitButton\" action=\""+CGIPATH+"/advToVal.py\" method=\"post\" >"
   print "<input type=\"hidden\" name=\"DATABASE_NAME\" value=\""+ db +"\" >"
   print "<input type=\"hidden\" name=\"DATABASE_TABLE\" value=\""+ table +"\" >"
   print "<table boarder=\"1\">"
@@ -44,14 +44,14 @@ def advanced(db,table):
 
     print "<tr>"
     print "<td>" + field + "</td>"
-    print "<td> <input type=\"text\" name=\"" +field+"_IINAME\"> </td>"
+    print "<td> <input type=\"text\" name=\"" +field+"_IINAME\" </td>"
 
     print "<td>" + fieldType + "</td>"
 
     if (mandatoryField == 1 ):
-      print "<td> <input type=\"checkbox\" name=\""+ field +"_MANDATORY\" value = \"True\" checked disabled> </td>"
+      print "<td> <input type=\"checkbox\" name=\""+ field +"_MANDATORY\" value = \"True\" checked disabled </td>"
     if (mandatoryField == 0):
-      print "<td> <input type=\"checkbox\" name=\""+ field +"_MANDATORY\" value = \"True\"> </td>"
+      print "<td> <input type=\"checkbox\" name=\""+ field +"_MANDATORY\" value = \"True\" </td>"
 
     if (defaultValue == None):
       print "<td> <input type=\"text\" name=\""+field+"_DEFAULT\"> </td>"
@@ -66,21 +66,14 @@ def advanced(db,table):
     print "<td> <input type=\"checkbox\" name=\""+ field +"_DISABLE\" value = \"True\"> </td>"
 
     if (fieldRelational != None):
-      print "<td> <select name=\""+ field +"_OPT_TYPE\">"
+      print "<td> <select name=\""+ field +"_OPT_TYPE\"</td>"
       print "<option value=\"dropdown\">Dropdown</option>"
       print "<option value=\"radio\">Radio</option>"
-      print "</select> </td>"
+      print "</select>"
  
     print "</tr>"
 
   print "</table>"
-  print "<br>"
-  print "<div> Select the output mode: </div>"
-  print "<div>"
-  print "<input type=\"radio\" name=\"OUTPUT_MODE\" value = \"II\" checked >Insert Interface "
-  print "<input type=\"radio\" name=\"OUTPUT_MODE\" value = \"XML\" >XML"
-  print "</div>"
-
   print "<div class=\"submitButtonDiv\">"
   print "<input id=\"submitButton\" type=\"submit\" value=\"Submit\">"
   print "</div>" #div class

@@ -7,6 +7,8 @@ from view.failure import failure as viewFailure
 from view.basicXml import basicXml as viewBasicXml
 from view.advanced import advanced as viewAdvanced
 from view.insert import insert as viewInsert
+from view.advValidation import advValidation as viewAdvValidation
+
 
 form = cgi.FieldStorage()
 db = form.getvalue("DATABASE_NAME")
@@ -35,6 +37,10 @@ if action == "ADVANCED":
 
 if action == "INSERT":
   viewInsert(db, table)
+  exit(0)
+
+if action == "VALIDATION":
+  viewAdvValidation(db, table)
   exit(0)
 
 if action == "SHOW":

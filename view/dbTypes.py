@@ -1,0 +1,9 @@
+#!/usr/bin/python
+
+
+# data types from: http://www.sqlite.org/datatype3.html
+#def sqlite3():
+INTEGER = ["INT", "INTEGER", "TINYINT", "SMALLINT", "MEDIUMINT", "BIGINT", "UNSIGNED BIG INT", "INT2", "INT8"]
+TEXT = ["CHARACTER(20)", "VARCHAR(255)", "VARYING CHARACTER(255)", "NCHAR(55)", "NATIVE CHARACTER(70)", "NVARCHAR(100)", "TEXT", "CLOB"]
+REAL = ["REAL", "DOUBLE", "DOUBLE PRECISION", "FLOAT"]
+NUMERIC = ["NUMERIC", "DECIMAL(10,5)", "BOOLEAN", "DATE", "DATETIME" ]

@@ -23,6 +23,7 @@ def tables (tables, db):
   print "<div><input type=\"radio\" name=\"DATABASE_ACTION\" value=\"INSERT\" >Simple Insert Interface</div>"
   print "<div><input type=\"radio\" name=\"DATABASE_ACTION\" value=\"XML\">Simple XML</div>"
   print "<div><input type=\"radio\" name=\"DATABASE_ACTION\" value=\"ADVANCED\" checked >Advanced</div>"
+  print "<div><input type=\"radio\" name=\"DATABASE_ACTION\" value=\"VALIDATION\">Advanced - Validation >>Em teste! </div>"
   print "<div><input type=\"radio\" name=\"DATABASE_ACTION\" value=\"SHOW\" disabled>Exibir >>Nao implementada! </div>"
   print "<div class=\"submitButtonDiv\">"
   print "<input id=\"submitButton\" type=\"submit\" value=\"Submit\">"
