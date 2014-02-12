@@ -20,7 +20,6 @@ def validate (db, table, configFilePath):
   print "<tr>"
   print "<th> Name (II)</th>"
   print "<th> Type </th>"
-  print "<th> Mandatory </th>"
   print "<th> Validation </th>"
   print "</tr>"
 
@@ -33,14 +32,16 @@ def validate (db, table, configFilePath):
     exit(0)
 
   configField = json.loads( configFieldJson )
-
+  fieldsDict = JSONmodules.fieldsAttDict(db, table)
+  
   for field in configField.keys():
     fieldOpt = configField[field]
+    fieldType = fieldsDict[field]["fieldType"]
     print fieldOpt
 
     print "<tr>"
     print "<td>" + fieldOpt["IIName"] + "</td>"
-    print "<td>" + fieldOpt[""] + "</td>"
+    print "<td>" + fieldType + "</td>"
 
 '''
 

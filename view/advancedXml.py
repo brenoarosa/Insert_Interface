@@ -41,11 +41,13 @@ def advancedXml(db, table, fieldOpt):
     defaultValue = fieldOpt[name].get("defaultValue")
     mandatoryField = fieldOpt[name].get("mandatoryField")
     disable = fieldOpt[name].get("disable")
+    option = fieldOpt[name].get("opt_type")
 
     if (fieldRelational != None): #tem relacionamento
       print "<column>"
       print "<colName>"+ name  +"</colName>"
       print "<colType>"+ fieldType +"</colType>"
+      print "<colOptType>"+option+"</colOptType>"
       print "<colReferenceTable>"+ tableRelational +"</colReferenceTable>"
       print "<colReferenceCol>"+ fieldRelational +"</colReferenceCol>"
       if (IIName != None):

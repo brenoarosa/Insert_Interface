@@ -26,6 +26,7 @@ def advanced(db,table):
   print "<th> Default Value </th>"
   print "<th> Primary Key </th>"
   print "<th> Disable </th>"
+  print "<th> Option Type </th>"
 
   print "</tr>"
 
@@ -63,6 +64,13 @@ def advanced(db,table):
       print "<td> <input type=\"checkbox\" name=\""+ field +"_PRIMARY\" value = \"True\" disabled </td>"
 
     print "<td> <input type=\"checkbox\" name=\""+ field +"_DISABLE\" value = \"True\" </td>"
+
+    if (fieldRelational != None):
+      print "<td> <select name=\""+ field +"_OPT_TYPE\"</td>"
+      print "<option value=\"dropdown\">Dropdown</option>"
+      print "<option value=\"radio\">Radio</option>"
+      print "</select>"
+ 
     print "</tr>"
 
   print "</table>"
