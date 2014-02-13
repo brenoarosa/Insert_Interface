@@ -1,23 +1,47 @@
 {
     "Idade": {
+        "rules": {
+            "range": [
+                "3",
+                "7"
+            ],
+            "number": []
+        },
         "IIName": "Idade",
         "defaultValue": null,
         "disable": null,
         "mandatoryField": null
     },
     "Faculdade": {
+        "rules": {
+            "minlenght": [
+                "2"
+            ],
+            "email": [],
+            "maxlenght": [
+                "25"
+            ]
+        },
         "IIName": "Faculdade",
         "defaultValue": null,
         "disable": null,
         "mandatoryField": null
     },
     "ID_Alunos": {
+        "rules": {
+            "digits": [],
+            "range": [
+                "0",
+                "3333"
+            ]
+        },
         "IIName": "ID_Alunos",
         "defaultValue": null,
         "disable": null,
         "mandatoryField": null
     },
     "Nome": {
+        "rules": {},
         "IIName": "Nome",
         "defaultValue": null,
         "disable": null,

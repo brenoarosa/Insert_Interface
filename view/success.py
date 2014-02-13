@@ -7,13 +7,10 @@ import JSONmodules
 CGIPATH = "."
 
 @header
-def success(message):
+def success(message, submessage=None):
 
   print "<div><b> "+message+" </b></div>"
-  print "<br clear=\"both\">"
-  print "</div>"
-  # print "<iframe style=\"display:none\" name=\"submitIframe\" id=\"submitIframe\" src=\"\"></iframe>"
-  print "</div>"
-  print "</div>"
+  if submessage !=None:
+    print "<div>"+ submessage +"</div>"
   return None
 

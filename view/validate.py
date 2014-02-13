@@ -12,7 +12,7 @@ CGIPATH = "."
 @header
 def validate (db, table, configFilePath):
 
-  print "<div><form target=\"submitButton\" action=\""+CGIPATH+"/****************.py\" method=\"post\" name=\"mainForm\">"
+  print "<div><form target=\"submitButton\" action=\""+CGIPATH+"/valToForm.py\" method=\"post\" name=\"mainForm\">"
   print "<div class=\"divData\">"
   print "<input type=\"hidden\" name=\"DATABASE_NAME\" value=\""+ db +"\" >"
   print "<input type=\"hidden\" name=\"DATABASE_TABLE\" value=\""+ table +"\" >"
@@ -48,7 +48,7 @@ def validate (db, table, configFilePath):
     if fieldType in INTEGER:
       for val in INTEGER_VAL.keys():
         print("<tr><td></td><td></td>")
-	print ("<td> <input type=\"checkbox\" name=\""+ val +"\" value = \"True\">" + val)
+	print ("<td> <input type=\"checkbox\" name=\""+field+"_"+val+"\" value = \"True\">" + val)
 	for i in range(INTEGER_VAL[val]):
 	  print ("<input type=\"text\" name= \""+field+"_"+val+"_ARG"+str(i)+"\">")
         print("</td></tr>")
@@ -57,7 +57,7 @@ def validate (db, table, configFilePath):
     if fieldType in TEXT:
       for val in TEXT_VAL.keys():
         print("<tr><td></td><td></td>")
-        print ("<td> <input type=\"checkbox\" name=\""+ val +"\" value = \"True\">" + val)
+        print ("<td> <input type=\"checkbox\" name=\""+field+"_"+val+"\" value = \"True\">" + val)
         for i in range(TEXT_VAL[val]):
           print ("<input type=\"text\" name= \""+field+"_"+val+"_ARG"+str(i)+"\">")
         print("</td></tr>")
@@ -66,7 +66,7 @@ def validate (db, table, configFilePath):
     if fieldType in REAL:
       for val in REAL_VAL.keys():
         print("<tr><td></td><td></td>")
-        print ("<td> <input type=\"checkbox\" name=\""+ val +"\" value = \"True\">" + val)
+        print ("<td> <input type=\"checkbox\" name=\""+field+"_"+val+"\" value = \"True\">" + val)
         for i in range(REAL_VAL[val]):
           print ("<input type=\"text\" name= \""+field+"_"+val+"_ARG"+str(i)+"\">")
         print("</td></tr>")
@@ -75,7 +75,7 @@ def validate (db, table, configFilePath):
     if fieldType in NUMERIC:
       for val in NUMERIC_VAL.keys():
         print("<tr><td></td><td></td>")
-        print ("<td> <input type=\"checkbox\" name=\""+ val +"\" value = \"True\">" + val)
+        print ("<td> <input type=\"checkbox\" name=\""+field+"_"+val+"\" value = \"True\">" + val)
         for i in range(NUMERIC_VAL[val]):
           print ("<input type=\"text\" name= \""+field+"_"+val+"_ARG"+str(i)+"\">")
 	print("</td></tr>")
