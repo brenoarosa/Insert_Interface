@@ -1,6 +1,5 @@
 #!/usr/bin/python
 
-
 import json
 import sys
 import cgi
@@ -10,6 +9,7 @@ import traceback
 from view.validate import validate as viewValidate
 from view.failure import failure as viewFailure
 from view.success import success as viewSuccess
+from view.insertValidate import insertValidate as viewInsertValidate
 from view.valTypes import *
 
 form = cgi.FieldStorage()

@@ -32,6 +32,7 @@ for name in fieldName:
   singularFieldOpt['mandatoryField'] = form.getvalue(name+"_MANDATORY") 
   singularFieldOpt['defaultValue'] = form.getvalue(name+"_DEFAULT") 
   singularFieldOpt['disable'] = form.getvalue(name+"_DISABLE")
+  singularFieldOpt['opt_type'] = form.getvalue(name +"_OPT_TYPE")
   fieldOpt[name] = singularFieldOpt
 
 fieldOptJson = json.dumps(fieldOpt ,indent=4, separators=(',', ': ')  )
