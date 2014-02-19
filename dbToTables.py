@@ -3,8 +3,8 @@
 import cgi
 import os
 import JSONmodules 
-from view.failure import failure as viewFailure
 from view.tables import tables as viewTables
+from view.failure import failure as viewFailure
 from dbToJson import dbToJson 
 
 form = cgi.FieldStorage()
