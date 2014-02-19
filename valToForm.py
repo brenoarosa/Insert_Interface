@@ -74,10 +74,11 @@ try:
   jsonFile = open(configFilePath, 'w')
   jsonFile.write(configFieldJson)
   jsonFile.close()
-#  viewInsertValidate(db, table, configFilePath)
+  viewInsertValidate(db, table, configFilePath)
 
 except IOError, error:
   viewFailure("File cannot be created!")
 
-viewSuccess("Configuracao da II: ", configFieldJson)
+#debbug json
+#viewSuccess("Configuracao da II: ", configFieldJson)
 exit(0)

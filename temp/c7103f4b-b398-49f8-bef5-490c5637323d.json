@@ -1,0 +1,34 @@
+{
+    "Idade": {
+        "IIName": "Idad",
+        "rules": {},
+        "defaultValue": null,
+        "opt_type": null,
+        "disable": "True",
+        "mandatoryField": "True"
+    },
+    "Faculdade": {
+        "IIName": "faculdad",
+        "rules": {},
+        "defaultValue": "aaa",
+        "opt_type": "radio",
+        "disable": null,
+        "mandatoryField": null
+    },
+    "ID_Alunos": {
+        "IIName": "Id_A",
+        "rules": {},
+        "defaultValue": null,
+        "opt_type": null,
+        "disable": "True",
+        "mandatoryField": "True"
+    },
+    "Nome": {
+        "IIName": "Nom",
+        "rules": {},
+        "defaultValue": "bbb",
+        "opt_type": null,
+        "disable": "True",
+        "mandatoryField": null
+    }
+}

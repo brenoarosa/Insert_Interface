@@ -1,8 +1,16 @@
 #!/usr/bin/python
 
 from header import header
+from failure import failure as viewFailure
+import json
+import JSONmodules
+import traceback
 
 CGIPATH = "."
+
+#
+# APLICAR VALIDACAO
+#
 
 @header
 def insertValidate(db, table, configFilePath):
@@ -22,7 +30,7 @@ def insertValidate(db, table, configFilePath):
 
   configField = json.loads( configFieldJson )
   fieldsDict = JSONmodules.fieldsAttDict(db, table)
-
+  
   for field in configField.keys():
     fieldAtt = fieldsDict[field]
 
@@ -30,11 +38,11 @@ def insertValidate(db, table, configFilePath):
     tableRelational = fieldAtt["tableRelational"]
     relationalValues = fieldAtt["relationalValues"]
     
-    IIName = configFile[field].get("IIName")
-    defaultValue = configFile[field].get("defaultValue")
-    Mandatory = configFile[field].get("mandatoryField")
-    Disable = configFile[field].get("disable")
-    option = configFile[field].get("opt_type")
+    IIName = configField[field]["IIName"]
+    defaultValue = configField[field]["defaultValue"]
+    Mandatory = configField[field]["mandatoryField"]
+    Disable = configField[field]["disable"]
+    option = configField[field]["opt_type"]
 
     if (defaultValue == None):
       defaultValue = ""
