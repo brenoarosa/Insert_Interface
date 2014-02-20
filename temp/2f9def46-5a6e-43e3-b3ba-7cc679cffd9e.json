@@ -1,0 +1,53 @@
+{
+    "Idade": {
+        "IIName": "idad",
+        "rules": {
+            "digits": [],
+            "range": [
+                "0",
+                "200"
+            ],
+            "min": [
+                "0"
+            ]
+        },
+        "defaultValue": "1",
+        "opt_type": null,
+        "disable": null,
+        "mandatoryField": null
+    },
+    "Faculdade": {
+        "IIName": "facul",
+        "rules": {
+            "minlenght": [
+                "2"
+            ]
+        },
+        "defaultValue": null,
+        "opt_type": "dropdown",
+        "disable": null,
+        "mandatoryField": null
+    },
+    "ID_Alunos": {
+        "IIName": "id",
+        "rules": {
+            "digits": []
+        },
+        "defaultValue": "9999",
+        "opt_type": null,
+        "disable": null,
+        "mandatoryField": "True"
+    },
+    "Nome": {
+        "IIName": "nome",
+        "rules": {
+            "maxlenght": [
+                "20"
+            ]
+        },
+        "defaultValue": "aaaaa",
+        "opt_type": null,
+        "disable": "True",
+        "mandatoryField": "True"
+    }
+}

@@ -58,7 +58,11 @@ def insertValidate(db, table, configFilePath):
     if (Disable == "True"):
       Disable = "disabled"
 
-
+    #regra formacao strValicadao#################333
+    strValidacao = ""
+    for regra in configField[field]["rules"].keys():
+      strValidacao += regra +" "
+    #########################################################
 
     if (fieldRelational == None): #Nao tem relacionamento
         print "<div> %s%s: <input type=\"text\" name=\"FIELD_%s\" id=\"DATABASE_FIELD_%s\" value=\"%s\" %s></div>" % (IIName, Mandatory, field, field, defaultValue, Disable)
@@ -121,16 +125,9 @@ def insertValidate(db, table, configFilePath):
 #script Validacao
   print "<script>"
   print "$().ready(function() {"
-  print "  $(\"#mainForm\").validate({ "
-  print "    rules: {"
-  # regra de formacao -> nome do campo: {regra: [parametros], regra2: [parametros], ... },
-  for field in configField.keys():
-    rulesStr += "FIELD_"+field+ " : {" ++ " },\n"
-  print "    }"
-  # possivel adicionar mensagens personalizadas.
-  print "  });"
+  print "  $(\"#mainForm\").validate(); "
   print "});"
   print "</script>"
-
+    
   return None
 
