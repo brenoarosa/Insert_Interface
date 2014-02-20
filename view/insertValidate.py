@@ -15,7 +15,7 @@ CGIPATH = "."
 @header
 def insertValidate(db, table, configFilePath):
 
-  print "<div><form target=\"submitButton\" onsubmit=\"SendEnable()\" action=\""+CGIPATH+"/insertIntoDB.py\" method=\"post\" name=\"mainForm\">"
+  print "<div><form target=\"submitButton\" onsubmit=\"SendEnable()\" action=\""+CGIPATH+"/insertIntoDB.py\" method=\"post\" id=\"mainForm\" name=\"mainForm\">"
   print "<div class=\"divData\">"
   print "<input type=\"hidden\" name=\"DATABASE_NAME\" value=\""+ db +"\" >"
   print "<input type=\"hidden\" name=\"DATABASE_TABLE\" value=\""+ table +"\" >"
@@ -112,12 +112,25 @@ def insertValidate(db, table, configFilePath):
 #script Disable
   print "<script>"
   print "function SendEnable(){"
-  for name in fieldName:
-    print "  document.getElementById(\"DATABASE_FIELD_%s\").disabled = false;" % (name)
+  for field in configField.keys():
+    print "  document.getElementById(\"DATABASE_FIELD_%s\").disabled = false;" % (field)
   print "  document.getElementByName(\"mainForm\").submit();"
   print "}"
   print "</script>"
 
+#script Validacao
+  print "<script>"
+  print "$().ready(function() {"
+  print "  $(\"#mainForm\").validate({ "
+  print "    rules: {"
+  # regra de formacao -> nome do campo: {regra: [parametros], regra2: [parametros], ... },
+  for field in configField.keys():
+    rulesStr += "FIELD_"+field+ " : {" ++ " },\n"
+  print "    }"
+  # possivel adicionar mensagens personalizadas.
+  print "  });"
+  print "});"
+  print "</script>"
 
   return None
 
