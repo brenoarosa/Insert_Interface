@@ -58,12 +58,6 @@ def insertValidate(db, table, configFilePath):
     if (Disable == "True"):
       Disable = "disabled"
 
-    #regra formacao strValicadao#################333
-    strValidacao = ""
-    for regra in configField[field]["rules"].keys():
-      strValidacao += regra +" "
-    #########################################################
-
     if (fieldRelational == None): #Nao tem relacionamento
         print "<div> %s%s: <input type=\"text\" name=\"FIELD_%s\" id=\"DATABASE_FIELD_%s\" value=\"%s\" %s></div>" % (IIName, Mandatory, field, field, defaultValue, Disable)
 
@@ -122,10 +116,18 @@ def insertValidate(db, table, configFilePath):
   print "}"
   print "</script>"
 
+  regra = {"rules": {}}
+  for field in configField.keys():
+    regra["rules"][field] = configField[field]["rules"]
+
+  regraJson = json.dumps(regra)
+
 #script Validacao
   print "<script>"
   print "$().ready(function() {"
-  print "  $(\"#mainForm\").validate(); "
+  print "  $(\"#mainForm\").validate("
+  print regraJson 
+  print "  );"
   print "});"
   print "</script>"
     
